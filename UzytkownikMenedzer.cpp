@@ -1,6 +1,6 @@
 #include "UzytkownikMenedzer.h"
 
-void UzytkownikMeneger::rejestracjaUzytkownika()
+void UzytkownikMenedzer::rejestracjaUzytkownika()
 {
     Uzytkownik uzytkownik = podajDaneNowegoUzytkownika();
 
@@ -11,7 +11,7 @@ void UzytkownikMeneger::rejestracjaUzytkownika()
     system("pause");
 }
 
-Uzytkownik UzytkownikMeneger::podajDaneNowegoUzytkownika()
+Uzytkownik UzytkownikMenedzer::podajDaneNowegoUzytkownika()
 {
     Uzytkownik uzytkownik;
 
@@ -34,7 +34,7 @@ Uzytkownik UzytkownikMeneger::podajDaneNowegoUzytkownika()
     return uzytkownik;
 }
 
-int UzytkownikMeneger::pobierzIdNowegoUzytkownika()
+int UzytkownikMenedzer::pobierzIdNowegoUzytkownika()
 {
     if (uzytkownicy.empty() == true)
         return 1;
@@ -42,7 +42,7 @@ int UzytkownikMeneger::pobierzIdNowegoUzytkownika()
         return uzytkownicy.back().pobierzId() + 1;
 }
 
-bool UzytkownikMeneger::czyIstniejeLogin(string login)
+bool UzytkownikMenedzer::czyIstniejeLogin(string login)
 {
     for (int i = 0; i < uzytkownicy.size(); i++)
     {
@@ -55,7 +55,7 @@ bool UzytkownikMeneger::czyIstniejeLogin(string login)
     return false;
 }
 
-void UzytkownikMeneger::wypiszWszystkichUzytkownikow()
+void UzytkownikMenedzer::wypiszWszystkichUzytkownikow()
 {
    for (int i = 0; i < uzytkownicy.size(); i++)
     {
@@ -63,4 +63,9 @@ void UzytkownikMeneger::wypiszWszystkichUzytkownikow()
         cout << uzytkownicy[i].pobierzLogin() << endl;
         cout << uzytkownicy[i].pobierzHaslo() << endl;
     }
+}
+
+void UzytkownikMenedzer::wczytajUzytkownikowZPliku()
+{
+    uzytkownicy = plikZUzytkownikami.wczytajUzytkownikowZPliku();
 }
