@@ -1,5 +1,5 @@
-#ifndef UZYTKOWNIKMENEGER_H
-#define UZYTKOWNIKMENEGER_H
+#ifndef UZYTKOWNIKMENEDZER_H
+#define UZYTKOWNIKMENEDZER_H
 
 #include <iostream>
 #include <vector>
@@ -10,7 +10,7 @@
 
 using namespace std;
 
-class UzytkownikMeneger
+class UzytkownikMenedzer
 {
     int idZalogowanegoUzytkownika;
     vector<Uzytkownik> uzytkownicy;
@@ -23,6 +23,7 @@ class UzytkownikMeneger
 public:
     void rejestracjaUzytkownika();
     void wypiszWszystkichUzytkownikow();
+    void wczytajUzytkownikowZPliku();
 };
 
-#endif // UZYTKOWNIKMENEGER_H
+#endif // UZYTKOWNIKMENEDZER_H
