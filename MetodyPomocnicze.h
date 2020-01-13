@@ -9,7 +9,7 @@ using namespace std;
 class MetodyPomocnicze
 {
 public:
-    static string konwerjsaIntNaString(int liczba);
+    static string konwersjaIntNaString(int liczba);
 };
 
 #endif // METODYPOMOCNICZE_H
