@@ -114,8 +114,8 @@ void UzytkownikMenedzer::ustawIdZalogowanegoUzytkownika(int idUzytkownika)
 {
     if(idUzytkownika >= 0)
         idZalogowanegoUzytkownika = idUzytkownika;
-        //cout << idZalogowanegoUzytkownika;
-        //system("pause");
+        cout << idZalogowanegoUzytkownika;
+        system("pause");
 }
 
 int UzytkownikMenedzer::pobierzIdZalogowanegoUzytkownika()
@@ -139,4 +139,9 @@ void UzytkownikMenedzer::zmianaHaslaZalogowanegoUzytkownika()
         }
     }
     plikZUzytkownikami.zapiszWszystkichUzytkownikowDoPliku(uzytkownicy);
+}
+
+void UzytkownikMenedzer::wylogowanieUzytkownika()
+{
+    ustawIdZalogowanegoUzytkownika(0);
 }
