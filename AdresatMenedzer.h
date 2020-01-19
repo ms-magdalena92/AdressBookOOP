@@ -12,7 +12,6 @@ using namespace std;
 
 class AdresatMenedzer
 {
-    int idOstatniegoAdresata;
     vector<Adresat> adresaci;
 
 public:
