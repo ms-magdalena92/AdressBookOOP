@@ -14,7 +14,7 @@ class KsiazkaAdresowa
 
 public:
     KsiazkaAdresowa(string nazwaPlikuZUzytkownikami, string nazwaPlikuZAdresatami)
-    : uzytkownikMenedzer(nazwaPlikuZUzytkownikami), NAZWA_PLIKU_Z_ADRESATAMI(nazwaPlikuZAdresatami)
+        : uzytkownikMenedzer(nazwaPlikuZUzytkownikami), NAZWA_PLIKU_Z_ADRESATAMI(nazwaPlikuZAdresatami)
     {
         adresatMenedzer = NULL;
     };
@@ -30,6 +30,9 @@ public:
     void wylogowanieUzytkownika();
     void dodajAdresata();
     void wyswietlWszystkichAdresatow();
+    bool sprawdzCzyUzytkownikJestZalogowany();
+    char wybierzOpcjeZMenuGlownego();
+    char wybierzOpcjeZMenuUzytkownika();
 };
 
 #endif // KSIAZKAADRESOWA_H

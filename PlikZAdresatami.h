@@ -5,7 +5,6 @@
 #include <vector>
 #include <fstream>
 #include <cstdlib>
-#include <sstream>
 
 #include "Adresat.h"
 #include "MetodyPomocnicze.h"
@@ -26,7 +25,7 @@ class PlikZAdresatami
 public:
     PlikZAdresatami (string nazwaPlikuZAdresatami): NAZWA_PLIKU_Z_ADRESATAMI(nazwaPlikuZAdresatami)
     {
-    idOstatniegoAdresata = 0;
+        idOstatniegoAdresata = 0;
     };
     int pobierzIdOstatniegoAdresata();
     vector <Adresat> wczytajAdresatowZalogowanegoUzytkownikaZPliku (int idZalogowanegoUzytkownika);

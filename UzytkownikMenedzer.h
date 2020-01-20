@@ -33,6 +33,8 @@ public:
     void zmianaHaslaZalogowanegoUzytkownika();
     void wylogowanieUzytkownika();
     bool sprawdzCzyUzytkownikJestZalogowany();
+    char wybierzOpcjeZMenuGlownego();
+    char wybierzOpcjeZMenuUzytkownika();
 };
 
 #endif // UZYTKOWNIKMENEDZER_H
