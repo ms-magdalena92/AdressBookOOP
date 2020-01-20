@@ -8,9 +8,7 @@ void AdresatMenedzer::dodajAdresata()
     adresat = podajDaneNowegoAdresata();
 
     adresaci.push_back(adresat);
-    //dopiszAdresataDoPliku(adresat);
-
-    //return ++idOstatniegoAdresata;
+    plikZAdresatami.dopiszAdresataDoPliku(adresat);
 }
 
 Adresat AdresatMenedzer::podajDaneNowegoAdresata()
@@ -43,7 +41,6 @@ Adresat AdresatMenedzer::podajDaneNowegoAdresata()
 
 void AdresatMenedzer::wyswietlWszystkichAdresatow()
 {
-    //Adresat adresat;
     system("cls");
     if (!adresaci.empty())
     {

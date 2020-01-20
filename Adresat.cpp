@@ -35,6 +35,10 @@ int Adresat::pobierzId()
 {
     return id;
 }
+int Adresat::pobierzIdUzytkownika()
+{
+    return idUzytkownika;
+}
 string Adresat::pobierzImie()
 {
     return imie;
