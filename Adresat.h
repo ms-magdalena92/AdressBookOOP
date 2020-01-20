@@ -17,6 +17,7 @@ class Adresat
 
 public:
     void ustawId(int noweId);
+    void ustawIdUzytkownika(int ID_ZALOGOWANEGO_UZYTKOWNIKA);
     void ustawImie(string noweImie);
     void ustawNazwisko(string noweNazwisko);
     void ustawNumerTelefonu(string nowyNumerTelefonu);
@@ -26,6 +27,9 @@ public:
     int pobierzId();
     string pobierzImie();
     string pobierzNazwisko();
+    string pobierzNumerTelefonu();
+    string pobierzEmail();
+    string pobierzAdres();
 };
 
 #endif // ADRESAT_H

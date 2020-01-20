@@ -4,6 +4,12 @@ void Adresat::ustawId(int noweId)
 {
     id = noweId;
 }
+
+void Adresat::ustawIdUzytkownika(int ID_ZALOGOWANEGO_UZYTKOWNIKA)
+{
+    idUzytkownika = ID_ZALOGOWANEGO_UZYTKOWNIKA;
+}
+
 void Adresat::ustawImie(string noweImie)
 {
     imie = noweImie;
@@ -36,4 +42,16 @@ string Adresat::pobierzImie()
 string Adresat::pobierzNazwisko()
 {
     return nazwisko;
+}
+string Adresat::pobierzNumerTelefonu()
+{
+    return numerTelefonu;
+}
+string Adresat::pobierzEmail()
+{
+    return email;
+}
+string Adresat::pobierzAdres()
+{
+    return adres;
 }
