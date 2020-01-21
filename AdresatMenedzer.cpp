@@ -89,7 +89,7 @@ void AdresatMenedzer::usunAdresata()
             znak = MetodyPomocnicze::wczytajZnak();
             if (znak == 't')
             {
-                plikZAdresatami.usunWybranaLinieWPliku(idUsuwanegoAdresata);
+                plikZAdresatami.usunLubEdytujWybranaLinieWPliku(itr, "delete");
                 adresaci.erase(itr);
                 cout << endl << endl << "Szukany adresat zostal USUNIETY" << endl << endl;
                 system("pause");
@@ -115,4 +115,88 @@ int AdresatMenedzer::podajIdWybranegoAdresata()
     cout << "Podaj numer ID Adresata: ";
     idWybranegoAdresata  = MetodyPomocnicze::wczytajLiczbeCalkowita();
     return idWybranegoAdresata;
+}
+
+void AdresatMenedzer::edytujAdresata()
+{
+    system("cls");
+    //Adresat adresat;
+    int idEdytowanegoAdresata = 0;
+    string liniaZDanymiAdresata = "";
+
+    cout << ">>> EDYCJA WYBRANEGO ADRESATA <<<" << endl << endl;
+    idEdytowanegoAdresata = podajIdWybranegoAdresata();
+
+    char wybor;
+    bool czyIstniejeAdresat = false;
+
+    for (vector<Adresat>::iterator itr = adresaci.begin(); itr != adresaci.end(); itr++)
+    {
+        if (itr -> pobierzId() == idEdytowanegoAdresata)
+        {
+            czyIstniejeAdresat = true;
+            wybor = wybierzOpcjeZMenuEdycja();
+
+            switch (wybor)
+            {
+            case '1':
+                cout << "Podaj nowe imie: ";
+                itr -> ustawImie(MetodyPomocnicze::wczytajLinie());
+                itr -> ustawImie(MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(itr -> pobierzImie()));
+                plikZAdresatami.usunLubEdytujWybranaLinieWPliku(itr, "edit");
+                break;
+            case '2':
+                cout << "Podaj nowe nazwisko: ";
+                itr -> ustawNazwisko(MetodyPomocnicze::wczytajLinie());
+                itr -> ustawImie(MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(itr -> pobierzNazwisko()));
+                plikZAdresatami.usunLubEdytujWybranaLinieWPliku(itr, "edit");
+                break;
+            case '3':
+                cout << "Podaj nowy numer telefonu: ";
+                itr -> ustawNumerTelefonu(MetodyPomocnicze::wczytajLinie());
+                plikZAdresatami.usunLubEdytujWybranaLinieWPliku(itr, "edit");
+                break;
+            case '4':
+                cout << "Podaj nowy email: ";
+                itr -> ustawEmail(MetodyPomocnicze::wczytajLinie());
+                plikZAdresatami.usunLubEdytujWybranaLinieWPliku(itr, "edit");
+                break;
+            case '5':
+                cout << "Podaj nowy adres zamieszkania: ";
+                itr -> ustawAdres(MetodyPomocnicze::wczytajLinie());
+                plikZAdresatami.usunLubEdytujWybranaLinieWPliku(itr, "edit");
+                break;
+            case '6':
+                cout << endl << "Powrot do menu uzytkownika" << endl << endl;
+                break;
+            default:
+                cout << endl << "Nie ma takiej opcji w menu! Powrot do menu uzytkownika." << endl << endl;
+                break;
+            }
+        }
+    }
+    if (czyIstniejeAdresat == false)
+    {
+        cout << endl << "Nie ma takiego adresata." << endl << endl;
+    }
+    system("pause");
+}
+
+char AdresatMenedzer::wybierzOpcjeZMenuEdycja()
+{
+    char wybor;
+
+    cout << endl << "   >>> MENU  EDYCJA <<<" << endl;
+    cout << "---------------------------" << endl;
+    cout << "Ktore dane zaktualizowac: " << endl;
+    cout << "1 - Imie" << endl;
+    cout << "2 - Nazwisko" << endl;
+    cout << "3 - Numer telefonu" << endl;
+    cout << "4 - Email" << endl;
+    cout << "5 - Adres" << endl;
+    cout << "6 - Powrot " << endl;
+    cout << endl << "Twoj wybor: ";
+    wybor = MetodyPomocnicze::wczytajZnak();
+
+    return wybor;
 }

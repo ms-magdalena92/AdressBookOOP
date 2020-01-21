@@ -26,7 +26,9 @@
 + wyswietlWszystkichAdresatow(): void
 + sprawdzCzyUzytkownikJestZalogowany(): Bool
 + wybierzOpcjeZMenuGlownego(): Char
-+ wybierzOpcjeZMenuUzytkownika(): Char</panel_attributes>
++ wybierzOpcjeZMenuUzytkownika(): Char
++ usunAdresata(): void
++ edytujAdresata(): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -94,7 +96,8 @@
 + pobierzLiczbe(): String
 + wczytajLinie(): String
 + zamienPierwszaLitereNaDuzaAPozostaleNaMale(): String
-+ wczytajZnak(): Char</panel_attributes>
++ wczytajZnak(): Char
++ wczytajLiczbeCalkowita(): Integer</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -113,9 +116,13 @@
 --
 - podajDaneNowegoAdresata(): Adresat
 - wyswietlDaneAdresata(): void
+- podajIdWybranegoAdresata(): Integer
+- wybierzOpcjeZMenuEdycja(): Char
 + AdresatMenedzer()
 + dodajAdresata(): void
-+ wyswietlWszystkichAdresatow(): void</panel_attributes>
++ wyswietlWszystkichAdresatow(): void
++ usunAdresata(): void
++ edytujAdresata(): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -172,10 +179,13 @@
 - pobierzDaneAdresata(): Adresat
 - pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(): Integer
 - czyPlikJestPusty(): Bool
+- usunPlik(): void
+- zmienNazwePliku(): void
 + PlikZAdresatami()
 + pobierzIdOstatniegoAdresata(): Integer
 + wczytajAdresatowZalogowanegoUzytkownikaZPliku(): vector &lt;Adresat&gt;
-+ dopiszAdresataDoPliku():void</panel_attributes>
++ dopiszAdresataDoPliku(): void
++ usunLubEdytujWybranaLinieWPliku(): void</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>

@@ -145,10 +145,10 @@ bool PlikZAdresatami::czyPlikJestPusty(fstream &plikTekstowy)
         return false;
 }
 
-void PlikZAdresatami::usunWybranaLinieWPliku(int idUsuwanegoAdresata)
+void PlikZAdresatami::usunLubEdytujWybranaLinieWPliku(vector<Adresat>::iterator itr, string dzialanie)
 {
     fstream odczytywanyPlikTekstowy, tymczasowyPlikTekstowy;
-    string wczytanaLinia = "", idKontaktu = "", nazwaTymczasowegoPlikuZAdresatami = "Adresaci_tymczasowo.txt";
+    string wczytanaLinia = "", idAdresata = "", nazwaTymczasowegoPlikuZAdresatami = "Adresaci_tymczasowo.txt";
 
     odczytywanyPlikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::in);
     tymczasowyPlikTekstowy.open(nazwaTymczasowegoPlikuZAdresatami.c_str(), ios::out | ios::app);
@@ -157,18 +157,33 @@ void PlikZAdresatami::usunWybranaLinieWPliku(int idUsuwanegoAdresata)
     {
         while (!odczytywanyPlikTekstowy.eof())
         {
-            getline(odczytywanyPlikTekstowy,idKontaktu,'|');
+            getline(odczytywanyPlikTekstowy,idAdresata,'|');
             getline(odczytywanyPlikTekstowy,wczytanaLinia);
-            if (idUsuwanegoAdresata == atoi(idKontaktu.c_str()))
+            if (itr -> pobierzId() == atoi(idAdresata.c_str()) && dzialanie == "delete")
             {
                 continue;
             }
-            else if (atoi(idKontaktu.c_str()))
+            else if (itr -> pobierzId() == atoi(idAdresata.c_str()) && dzialanie == "edit")
+            {
+                //zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami();
+                if (czyPlikJestPusty(tymczasowyPlikTekstowy) == true)
+                    tymczasowyPlikTekstowy << itr -> pobierzId() << "|";
+                else
+                    tymczasowyPlikTekstowy << endl << itr -> pobierzId() << "|";
+                tymczasowyPlikTekstowy << itr -> pobierzIdUzytkownika() << "|";
+                tymczasowyPlikTekstowy << itr -> pobierzImie() << "|";
+                tymczasowyPlikTekstowy << itr -> pobierzNazwisko() << "|";
+                tymczasowyPlikTekstowy << itr -> pobierzNumerTelefonu() << "|";
+                tymczasowyPlikTekstowy << itr -> pobierzEmail() << "|";
+                tymczasowyPlikTekstowy << itr -> pobierzAdres();
+
+            }
+            else if (atoi(idAdresata.c_str()))
             {
                 if (czyPlikJestPusty(tymczasowyPlikTekstowy) == true)
-                    tymczasowyPlikTekstowy << idKontaktu + "|" + wczytanaLinia;
+                    tymczasowyPlikTekstowy << idAdresata + "|" + wczytanaLinia;
                 else
-                    tymczasowyPlikTekstowy << endl << idKontaktu + "|" + wczytanaLinia;
+                    tymczasowyPlikTekstowy << endl << idAdresata + "|" + wczytanaLinia;
             }
         }
         odczytywanyPlikTekstowy.close();
