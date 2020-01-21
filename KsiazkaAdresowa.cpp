@@ -56,3 +56,8 @@ char KsiazkaAdresowa::wybierzOpcjeZMenuUzytkownika()
 {
     uzytkownikMenedzer.wybierzOpcjeZMenuUzytkownika();
 }
+
+void KsiazkaAdresowa::usunAdresata()
+{
+    adresatMenedzer -> usunAdresata();
+}
