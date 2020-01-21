@@ -32,7 +32,7 @@ public:
     int pobierzIdOstatniegoAdresata();
     vector <Adresat> wczytajAdresatowZalogowanegoUzytkownikaZPliku (int idZalogowanegoUzytkownika);
     void dopiszAdresataDoPliku(Adresat adresat);
-    void usunWybranaLinieWPliku(int idUsuwanegoAdresata);
+    void usunLubEdytujWybranaLinieWPliku(vector<Adresat>::iterator itr, string dzialanie);
 };
 
 #endif // PLIKZADRESATAMI_H
