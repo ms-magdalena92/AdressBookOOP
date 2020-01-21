@@ -148,7 +148,7 @@ bool PlikZAdresatami::czyPlikJestPusty(fstream &plikTekstowy)
 void PlikZAdresatami::usunLubEdytujWybranaLinieWPliku(vector<Adresat>::iterator itr, string dzialanie)
 {
     fstream odczytywanyPlikTekstowy, tymczasowyPlikTekstowy;
-    string wczytanaLinia = "", idAdresata = "", nazwaTymczasowegoPlikuZAdresatami = "Adresaci_tymczasowo.txt";
+    string wczytanaLinia = "", idAdresata = "", nazwaTymczasowegoPlikuZAdresatami = "Adresaci_tymczasowo.txt", liniaZDanymiAdresata = "";
 
     odczytywanyPlikTekstowy.open(NAZWA_PLIKU_Z_ADRESATAMI.c_str(), ios::in);
     tymczasowyPlikTekstowy.open(nazwaTymczasowegoPlikuZAdresatami.c_str(), ios::out | ios::app);
@@ -165,25 +165,18 @@ void PlikZAdresatami::usunLubEdytujWybranaLinieWPliku(vector<Adresat>::iterator 
             }
             else if (itr -> pobierzId() == atoi(idAdresata.c_str()) && dzialanie == "edit")
             {
-                //zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami();
+                liniaZDanymiAdresata = zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(*itr);
                 if (czyPlikJestPusty(tymczasowyPlikTekstowy) == true)
-                    tymczasowyPlikTekstowy << itr -> pobierzId() << "|";
+                    tymczasowyPlikTekstowy << liniaZDanymiAdresata;
                 else
-                    tymczasowyPlikTekstowy << endl << itr -> pobierzId() << "|";
-                tymczasowyPlikTekstowy << itr -> pobierzIdUzytkownika() << "|";
-                tymczasowyPlikTekstowy << itr -> pobierzImie() << "|";
-                tymczasowyPlikTekstowy << itr -> pobierzNazwisko() << "|";
-                tymczasowyPlikTekstowy << itr -> pobierzNumerTelefonu() << "|";
-                tymczasowyPlikTekstowy << itr -> pobierzEmail() << "|";
-                tymczasowyPlikTekstowy << itr -> pobierzAdres();
-
+                    tymczasowyPlikTekstowy << endl << liniaZDanymiAdresata;
             }
             else if (atoi(idAdresata.c_str()))
             {
                 if (czyPlikJestPusty(tymczasowyPlikTekstowy) == true)
-                    tymczasowyPlikTekstowy << idAdresata + "|" + wczytanaLinia;
+                    tymczasowyPlikTekstowy << idAdresata + '|' + wczytanaLinia;
                 else
-                    tymczasowyPlikTekstowy << endl << idAdresata + "|" + wczytanaLinia;
+                    tymczasowyPlikTekstowy << endl << idAdresata + '|' + wczytanaLinia;
             }
         }
         odczytywanyPlikTekstowy.close();
