@@ -7,7 +7,7 @@
       <x>20</x>
       <y>10</y>
       <w>350</w>
-      <h>280</h>
+      <h>290</h>
     </coordinates>
     <panel_attributes>KsiazkaAdresowa
 --
@@ -18,7 +18,6 @@
 + KsiazkaAdresowa()
 + ~KsiazkaAdresowa()
 + rejestracjaUzytkownika(): void
-+ wypiszWszystkichUzytkownikow(): void
 + logowanieUzytkownika(): void
 + zmianaHaslaZalogowanegoUzytkownika(): void
 + wylogowanieUzytkownika(): void
@@ -28,7 +27,9 @@
 + wybierzOpcjeZMenuGlownego(): Char
 + wybierzOpcjeZMenuUzytkownika(): Char
 + usunAdresata(): void
-+ edytujAdresata(): void</panel_attributes>
++ edytujAdresata(): void
++ wyszukajAdresatowPoImieniu(): void
++ wyszukajAdresatowPoNazwisku(): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -69,7 +70,6 @@
 - czyIstniejeLogin(): Bool
 + UzytkownikMenedzer()
 + rejestracjaUzytkownika(): void
-+ wypiszWszystkichUzytkownikow(): void
 + logowanieUzytkownika(): void
 + pobierzIdZalogowanegoUzytkownika(): Integer
 + zmianaHaslaZalogowanegoUzytkownika(): void
@@ -118,11 +118,14 @@
 - wyswietlDaneAdresata(): void
 - podajIdWybranegoAdresata(): Integer
 - wybierzOpcjeZMenuEdycja(): Char
+- wyswietlIloscWyszukanychAdresatow(): void
 + AdresatMenedzer()
 + dodajAdresata(): void
 + wyswietlWszystkichAdresatow(): void
 + usunAdresata(): void
-+ edytujAdresata(): void</panel_attributes>
++ edytujAdresata(): void
++ wyszukajAdresatowPoImieniu(): void
++ wyszukajAdresatowPoNazwisku(): void</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -148,11 +151,10 @@
       <w>350</w>
       <h>170</h>
     </coordinates>
-    <panel_attributes>PlikZUzytkownikami
+    <panel_attributes>PlikZUzytkownikami : public PlikTekstowy
 --
-- NAZWA_PLIKU_Z_UZYTKOWNIKAMI: String
+
 --
-- czyPlikJestPusty(): Bool
 - zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(): String
 - pobierzDaneUzytkownika(): Uzytkownik
 + PlikZUzytkownikami()
@@ -169,9 +171,8 @@
       <w>410</w>
       <h>210</h>
     </coordinates>
-    <panel_attributes>PlikZAdresatami
+    <panel_attributes>PlikZAdresatami : public PlikTekstowy
 --
-- NAZWA_PLIKU_Z_ADRESATAMI: String
 - idOstatniegoAdresata: Integer
 --
 - pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(): Integer
@@ -186,6 +187,22 @@
 + wczytajAdresatowZalogowanegoUzytkownikaZPliku(): vector &lt;Adresat&gt;
 + dopiszAdresataDoPliku(): void
 + usunLubEdytujWybranaLinieWPliku(): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>810</x>
+      <y>480</y>
+      <w>160</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>PlikTekstowy
+--
+- NAZWA_PLIKU: String
+--
++ PlikTekstowy()
++ czyPlikJestPusty(): Bool</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
