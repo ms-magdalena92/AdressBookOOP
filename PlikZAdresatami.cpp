@@ -151,9 +151,7 @@ void PlikZAdresatami::usunLubEdytujWybranaLinieWPliku(vector<Adresat>::iterator 
             getline(odczytywanyPlikTekstowy,idAdresata,'|');
             getline(odczytywanyPlikTekstowy,wczytanaLinia);
             if (itr -> pobierzId() == atoi(idAdresata.c_str()) && dzialanie == "delete")
-            {
-                continue;
-            }
+            {}
             else if (itr -> pobierzId() == atoi(idAdresata.c_str()) && dzialanie == "edit")
             {
                 liniaZDanymiAdresata = zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(*itr);
