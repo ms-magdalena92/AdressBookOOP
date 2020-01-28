@@ -150,7 +150,7 @@ void AdresatMenedzer::edytujAdresata()
             case '2':
                 cout << "Podaj nowe nazwisko: ";
                 itr -> ustawNazwisko(MetodyPomocnicze::wczytajLinie());
-                itr -> ustawImie(MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(itr -> pobierzNazwisko()));
+                itr -> ustawNazwisko(MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(itr -> pobierzNazwisko()));
                 plikZAdresatami.usunLubEdytujWybranaLinieWPliku(itr, "edit");
                 break;
             case '3':
